@@ -34,5 +34,7 @@ public class Shield : MonoBehaviour
             }
             
         }
+
+        Destroy(this.gameObject);
     }
 }

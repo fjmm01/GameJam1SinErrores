@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class TestGrapplingGun : MonoBehaviour
 {
@@ -33,6 +35,10 @@ public class TestGrapplingGun : MonoBehaviour
     [SerializeField] private float maxDistnace = 20;
     public bool isGrapplingAnObject = false;
 
+    [SerializeField] GameObject grappledPrefab;
+
+    [SerializeField] GameObject contact;
+
 
     private enum LaunchType
     {
@@ -47,7 +53,7 @@ public class TestGrapplingGun : MonoBehaviour
 
     
 
-    [HideInInspector] public Vector2 grapplePoint;
+     public Vector2 grapplePoint;
     [HideInInspector] public Vector2 grappleDistanceVector;
 
     private void Start()
@@ -61,10 +67,14 @@ public class TestGrapplingGun : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            
             SetGrapplePoint();
+            
         }
-        else if (Input.GetKey(KeyCode.Mouse0))
+        
+        if (Input.GetKey(KeyCode.Mouse0))
         {
+            
             if (grappleRope.enabled)
             {
                 RotateGun(grapplePoint, false);
@@ -113,12 +123,13 @@ public class TestGrapplingGun : MonoBehaviour
         }
     }
 
-    void SetGrapplePoint()
+    public void SetGrapplePoint()
     {
         Vector2 distanceVector = m_camera.ScreenToWorldPoint(Input.mousePosition) - gunPivot.position;
         if (Physics2D.Raycast(firePoint.position, distanceVector.normalized))
         {
             RaycastHit2D _hit = Physics2D.Raycast(firePoint.position, distanceVector.normalized);
+            grappledPrefab = _hit.transform.gameObject;
             if (_hit.transform.gameObject.layer == grappableLayerNumber || _hit.transform.gameObject.layer == grappableLayerForObjects)
             {
                 if(_hit.transform.gameObject.layer == grappableLayerForObjects)
@@ -126,11 +137,15 @@ public class TestGrapplingGun : MonoBehaviour
                     isGrapplingAnObject = true;
                     if (Vector2.Distance(_hit.point, firePoint.position) <= maxDistnace || !hasMaxDistance)
                     {
-                        grapplePoint = _hit.point;
-                        m_springJoint2D.connectedAnchor = _hit.point;
+                        grapplePoint = _hit.collider.bounds.center;
+                        m_springJoint2D.connectedAnchor = _hit.collider.bounds.center;
                         grappleDistanceVector = grapplePoint - (Vector2)gunPivot.position;
                         grappleRope.enabled = true;
+                        contact.GetComponentInChildren<VisualEffect>().Play();
                     }
+                    
+                    
+                    
 
                 }
                 if(_hit.transform.gameObject.layer == grappableLayerNumber)

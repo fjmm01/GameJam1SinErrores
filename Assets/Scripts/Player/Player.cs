@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     
     void Update()
     {
-        if(playerCurrentLifePoints == 0)
+        if(playerCurrentLifePoints <= 0)
         {
             Destroy(gameObject, 2f);
         }
@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     {
         if (collision.CompareTag("Obstacule"))
         {
+            Debug.Log("You were Hit");
             movCamara.MoverCamara(5, 5, 0.5f);
             playerCurrentLifePoints -= 1;
         }

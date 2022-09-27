@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class Asteroid : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class Asteroid : MonoBehaviour
     private void Start()
     {
         target = GameObject.FindWithTag("Player");
-        
+        this.gameObject.GetComponentInChildren<VisualEffect>().Play();        
         DestroyAsteroid();
         
     }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class Satelite : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class Satelite : MonoBehaviour
     private void Start()
     {
         target = GameObject.FindWithTag("Player");
-        
+        this.gameObject.GetComponentInChildren<VisualEffect>().Play();
         DestroySatelite();
 
     }
