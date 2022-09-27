@@ -8,15 +8,13 @@ public class Asteroid : MonoBehaviour
     [SerializeField] GameObject target;
     [SerializeField] float asteroidSpeed;
     
-    public TesteGrapplingRope grapplingRope;
-    public TestGrapplingGun grapplingGun;
+   
     
 
     private void Start()
     {
         target = GameObject.FindWithTag("Player");
-        grapplingGun = target.GetComponentInChildren<TestGrapplingGun>();
-        grapplingRope = target.GetComponentInChildren<TesteGrapplingRope>();
+        
         DestroyAsteroid();
         
     }
@@ -24,13 +22,14 @@ public class Asteroid : MonoBehaviour
     private void Update()
     {
         transform.Translate(Vector3.left * asteroidSpeed * Time.deltaTime);
-        if (grapplingRope.isGrappling && grapplingGun.isGrapplingAnObject)
+        /*if (grapplingRope.isGrappling && grapplingGun.isGrapplingAnObject)
         {
             Debug.Log("YOU HIT AN ASTEROID RUUUUN");
             StartCoroutine(Launch());
             Debug.Log(asteroidSpeed);
             transform.Translate(Vector3.left * asteroidSpeed * Time.deltaTime);
         }
+        */
         
         
     }
@@ -42,7 +41,7 @@ public class Asteroid : MonoBehaviour
     
 
 
-    IEnumerator Launch()
+    /*IEnumerator Launch()
     {
         yield return new WaitForSeconds(2f);
 
@@ -51,4 +50,5 @@ public class Asteroid : MonoBehaviour
 
         yield return asteroidSpeed;
     }
+    */
 }

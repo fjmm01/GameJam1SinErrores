@@ -5,7 +5,7 @@ using UnityEngine;
 public class Spawner2 : MonoBehaviour
 {
     [SerializeField] Transform player;
-    [SerializeField] GameObject star;
+    public GameObject star;
     [SerializeField] GameObject asteroid;
     [SerializeField] GameObject satelite;
     [SerializeField] GameObject shield;
@@ -22,7 +22,7 @@ public class Spawner2 : MonoBehaviour
     
     void Awake()
     {
-        
+        center = new Vector3(transform.position.x, player.position.y + offset.y, transform.position.z);
         StartCoroutine(Star());
         StartCoroutine(Shield());
         StartCoroutine(Asteroid());
@@ -32,7 +32,15 @@ public class Spawner2 : MonoBehaviour
    
     void Update()
     {
-        center = player.transform.position + offset;
+        if(player != null)
+        {
+            center = new Vector3(transform.position.x, player.position.y + offset.y, transform.position.z);
+        }
+        else
+        {
+            return;
+        }
+        
     }
 
     public void SpawnStar(GameObject prefab)
@@ -96,9 +104,14 @@ public class Spawner2 : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
+   /* private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
+        
+        Gizmos.color = Color.white;
+        
+        
         Gizmos.DrawCube(center, spawnBounds);
     }
+   */
+   
 }

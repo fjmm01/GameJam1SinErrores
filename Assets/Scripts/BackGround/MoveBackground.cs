@@ -14,13 +14,13 @@ public class MoveBackground : MonoBehaviour
 
     void Update()
     {
-        if(transform.position.y >= centerBackGround.position.y + size)
+        if(transform.position.y >= centerBackGround.position.y )
         {
-            centerBackGround.position = new Vector2(centerBackGround.position.x, transform.position.y + size);
+            centerBackGround.position = new Vector2(centerBackGround.position.x, transform.position.y);
         }
-        else if(transform.position.y < centerBackGround.position.y - size)
+        else if(transform.position.y <= centerBackGround.position.y)
         {
-            centerBackGround.position = new Vector2(centerBackGround.position.x, transform.position.y - size);
+            centerBackGround.position = new Vector2(centerBackGround.position.x, transform.position.y);
         }
     }
 

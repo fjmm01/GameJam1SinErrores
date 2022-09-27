@@ -7,15 +7,13 @@ public class Satelite : MonoBehaviour
     [SerializeField] GameObject target;
     [SerializeField] float sateliteSpeed;
 
-    public TesteGrapplingRope grapplingRope;
-    public TestGrapplingGun grapplingGun;
+   
 
 
     private void Start()
     {
         target = GameObject.FindWithTag("Player");
-        grapplingRope = target.GetComponentInChildren<TesteGrapplingRope>();
-        grapplingGun = target.GetComponentInChildren<TestGrapplingGun>();
+        
         DestroySatelite();
 
     }
@@ -23,14 +21,14 @@ public class Satelite : MonoBehaviour
     private void Update()
     {
         transform.Translate(Vector3.down * sateliteSpeed * Time.deltaTime);
-        if (grapplingRope.isGrappling && grapplingGun.isGrapplingAnObject == true)
+        /*if (grapplingGun.isGrapplingAnObject == true && grapplingGun.)
         {
             Debug.Log("YOU HIT AN SATELITE RUUUUN");
             StartCoroutine(Launch());
             Debug.Log(sateliteSpeed);
             transform.Translate(Vector3.down * sateliteSpeed * Time.deltaTime);
         }
-
+        */
 
     }
 
@@ -41,7 +39,7 @@ public class Satelite : MonoBehaviour
 
 
 
-    IEnumerator Launch()
+    /*IEnumerator Launch()
     {
         yield return new WaitForSeconds(2f);
 
@@ -50,4 +48,5 @@ public class Satelite : MonoBehaviour
 
         yield return sateliteSpeed;
     }
+    */
 }

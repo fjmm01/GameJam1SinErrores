@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-
+    [SerializeField] MoivmientoCamara movCamara;
     public int playerMaxLifePoints;
     public int playerCurrentLifePoints;
     void Start()
@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     {
         if (collision.CompareTag("Obstacule"))
         {
+            movCamara.MoverCamara(5, 5, 0.5f);
             playerCurrentLifePoints -= 1;
         }
     }

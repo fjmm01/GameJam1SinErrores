@@ -4,15 +4,31 @@ using UnityEngine;
 
 public class Score : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] int highScore;
+    [SerializeField] Transform player;
+    public int actualScore;
     void Start()
     {
-        
+        actualScore = 0;
+        highScore = PlayerPrefs.GetInt("HighScore", highScore);
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
-        
+        if(player != null)
+        {
+            actualScore = (int)player.position.y;
+        }
+        else
+        {
+            return;
+        }
+       
+        if(actualScore > highScore)
+        {
+            
+            PlayerPrefs.SetInt("HighScore", actualScore);
+        }
     }
 }

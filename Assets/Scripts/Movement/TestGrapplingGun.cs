@@ -33,6 +33,7 @@ public class TestGrapplingGun : MonoBehaviour
     [SerializeField] private float maxDistnace = 20;
     public bool isGrapplingAnObject = false;
 
+
     private enum LaunchType
     {
         Transform_Launch,
@@ -123,14 +124,27 @@ public class TestGrapplingGun : MonoBehaviour
                 if(_hit.transform.gameObject.layer == grappableLayerForObjects)
                 {
                     isGrapplingAnObject = true;
+                    if (Vector2.Distance(_hit.point, firePoint.position) <= maxDistnace || !hasMaxDistance)
+                    {
+                        grapplePoint = _hit.point;
+                        m_springJoint2D.connectedAnchor = _hit.point;
+                        grappleDistanceVector = grapplePoint - (Vector2)gunPivot.position;
+                        grappleRope.enabled = true;
+                    }
+
                 }
-                if (Vector2.Distance(_hit.point, firePoint.position) <= maxDistnace || !hasMaxDistance)
+                if(_hit.transform.gameObject.layer == grappableLayerNumber)
                 {
-                    grapplePoint = _hit.point;
-                    m_springJoint2D.connectedAnchor = _hit.point;
-                    grappleDistanceVector = grapplePoint - (Vector2)gunPivot.position;
-                    grappleRope.enabled = true;
+                    isGrapplingAnObject = false;
+                    if (Vector2.Distance(_hit.point, firePoint.position) <= maxDistnace || !hasMaxDistance)
+                    {
+                        grapplePoint = _hit.point;
+                        m_springJoint2D.connectedAnchor = _hit.point;
+                        grappleDistanceVector = grapplePoint - (Vector2)gunPivot.position;
+                        grappleRope.enabled = true;
+                    }
                 }
+                
             }
         }
     }
