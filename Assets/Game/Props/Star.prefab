@@ -72,6 +72,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 083b5ae41ff8bc8458fc516b6097f000, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGrappled: 0
+  player: {fileID: 0}
+  lifeTime: 0
+  timer: 0
 --- !u!1 &6030744771455751584
 GameObject:
   m_ObjectHideFlags: 0
@@ -97,8 +101,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6030744771455751584}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2516, y: 0.2516, z: 0.2516}
+  m_LocalPosition: {x: 0.002, y: 0.003, z: 0}
+  m_LocalScale: {x: 0.13802776, y: 0.13802776, z: 0.13802776}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6030744770056065379}

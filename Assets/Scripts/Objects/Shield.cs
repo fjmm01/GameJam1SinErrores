@@ -11,7 +11,15 @@ public class Shield : MonoBehaviour
     void Start()
     {
         player = GameObject.FindWithTag("Player");
-        playerLife = player.GetComponent<Player>();
+        if (player != null)
+        {
+            playerLife = player.GetComponent<Player>();
+        }
+        else
+        {
+            return;
+        }
+        
     }
 
     

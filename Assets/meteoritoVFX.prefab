@@ -107,9 +107,9 @@ VFXRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 611571837
+  m_SortingLayer: 2
+  m_SortingOrder: 1
 --- !u!1 &208050417734277471
 GameObject:
   m_ObjectHideFlags: 0
@@ -120,7 +120,6 @@ GameObject:
   m_Component:
   - component: {fileID: 208050417734277469}
   - component: {fileID: 208050417734277470}
-  - component: {fileID: 208050417734277468}
   m_Layer: 0
   m_Name: rgew
   m_TagString: Untagged
@@ -195,19 +194,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &208050417734277468
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 208050417734277471}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c02e36c5e1785145810bed5e6e2cca6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 0.5
 --- !u!1 &208050418797485813
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,7 +203,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 208050418797485803}
-  - component: {fileID: 208050418797485812}
   m_Layer: 0
   m_Name: meteoritoVFX
   m_TagString: Untagged
@@ -242,17 +227,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &208050418797485812
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 208050418797485813}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79b9b45c4e6db8a4382f91155a66c5fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprite: {fileID: 208050417734277470}
-  StarScrollSpeed: 4

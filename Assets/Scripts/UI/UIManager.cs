@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class UIManager : MonoBehaviour
@@ -9,8 +10,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] Player player;
     [SerializeField] TMP_Text scoreText;
     [SerializeField] TMP_Text playerText;
-    private string scoreString;
-    private string playerString;
+    
 
     void Start()
     {
@@ -20,6 +20,7 @@ public class UIManager : MonoBehaviour
     
     void Update()
     {
-       
+        scoreText.text = score.actualScore.ToString();
+        playerText.text = "x" +player.playerCurrentLifePoints.ToString();
     }
 }

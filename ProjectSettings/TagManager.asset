@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Shield
   - Obstacule
+  - Ground
   layers:
   - Default
   - TransparentFX

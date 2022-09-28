@@ -6,6 +6,9 @@ using UnityEngine.VFX;
 
 public class TestGrapplingGun : MonoBehaviour
 {
+
+    
+
     [Header("Scripts Ref:")]
     public TesteGrapplingRope grappleRope;
 
@@ -60,6 +63,7 @@ public class TestGrapplingGun : MonoBehaviour
     {
         grappleRope.enabled = false;
         m_springJoint2D.enabled = false;
+        GetComponentInParent<Animator>().SetTrigger("PreLazo");
 
     }
 
@@ -97,6 +101,8 @@ public class TestGrapplingGun : MonoBehaviour
         }
         else if (Input.GetKeyUp(KeyCode.Mouse0))
         {
+            GetComponentInParent<Animator>().ResetTrigger("Cuerda");
+            GetComponentInParent<Animator>().SetTrigger("Volar");
             grappleRope.enabled = false;
             m_springJoint2D.enabled = false;
             m_rigidbody.gravityScale = 1;
@@ -137,11 +143,13 @@ public class TestGrapplingGun : MonoBehaviour
                     isGrapplingAnObject = true;
                     if (Vector2.Distance(_hit.point, firePoint.position) <= maxDistnace || !hasMaxDistance)
                     {
+                        GetComponentInParent<Animator>().ResetTrigger("PreLazo");
+                        GetComponentInParent<Animator>().SetTrigger("Cuerda");
                         grapplePoint = _hit.collider.bounds.center;
                         m_springJoint2D.connectedAnchor = _hit.collider.bounds.center;
                         grappleDistanceVector = grapplePoint - (Vector2)gunPivot.position;
                         grappleRope.enabled = true;
-                        contact.GetComponentInChildren<VisualEffect>().Play();
+                        //contact.GetComponentInChildren<VisualEffect>().Play();
                     }
                     
                     

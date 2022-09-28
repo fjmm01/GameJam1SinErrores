@@ -47,7 +47,7 @@ public class Spawner2 : MonoBehaviour
     {
         Vector3 pos = center + new Vector3(Random.Range(-spawnBounds.x/2,spawnBounds.x/2),Random.Range(-spawnBounds.y/2, spawnBounds.y/2),transform.position.z);
 
-        Instantiate(prefab,pos,Quaternion.identity);
+        Instantiate(prefab,pos,Quaternion.FromToRotation(new Vector3(0,0,0),new Vector3(360,0,0)));
     }
 
     public void SpawnShield(GameObject prefab)
