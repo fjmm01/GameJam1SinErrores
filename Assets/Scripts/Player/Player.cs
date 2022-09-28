@@ -20,7 +20,6 @@ public class Player : MonoBehaviour
         if(playerCurrentLifePoints == 0)
         {
             movCamara.MoverCamara(5, 5, 0.5f);
-            playerCurrentLifePoints = 0;
             GetComponent<Animator>().SetTrigger("Caer");
             Destroy(gameObject, 2f);
         }
@@ -35,7 +34,15 @@ public class Player : MonoBehaviour
         {
             Debug.Log("You were Hit");
             
-            playerCurrentLifePoints -= 1;   
+            if(playerCurrentLifePoints > 0)
+            {
+                playerCurrentLifePoints -= 1;
+            }
+            else if(playerCurrentLifePoints <= 0)
+            {
+                playerCurrentLifePoints = 0;
+            }
+               
         }
     }
 
