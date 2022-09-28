@@ -22,6 +22,10 @@ public class UIManager : MonoBehaviour
     {
         scoreText.text = score.actualScore.ToString();
         playerText.text = "x" +player.playerCurrentLifePoints.ToString();
+        if(Input.GetKey(KeyCode.Escape))
+        {
+            PauseGame();
+        }
     }
 
     private void RestartGame()
@@ -33,4 +37,11 @@ public class UIManager : MonoBehaviour
     {
         SceneManager.LoadScene("UI");
     }
+
+    private void PauseGame()
+    {
+        Time.timeScale = 0;
+    }
+
+
 }
